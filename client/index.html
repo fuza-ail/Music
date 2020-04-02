@@ -213,14 +213,73 @@
     <!-- third-cell / events and lyrics -->
     <section id="third-cell" class="hero is-dark is-fullheight">
       <div class="hero-body">
-        <div class="container has-text-centered">
-          <h1 class="title">
-            Events and Lyrics.
-          </h1>
-          <h2 class="subtitle">
-            This section will be showed after user has selected song and artist.
-          </h2>
+
+        <!-- tile -->
+        <div class="tile is-ancestor">
+
+          <!-- left vertical group -->
+          <div class="tile is-vertical is-8">
+
+            <!-- upper left boxes -->
+            <div class="tile">
+
+              <!-- title and artist -->
+              <div class="tile is-parent is-vertical">
+                <article class="tile is-child notification is-danger">
+                  <p class="title">Title</p>
+                  <p class="subtitle">- Song name -</p>
+                </article>
+                <article class="tile is-child notification is-success">
+                  <p class="title">Artist</p>
+                  <p class="subtitle">- Artist name-</p>
+                </article>
+              </div>
+
+              <!-- album -->
+              <div class="tile is-parent">
+                <article class="tile is-child notification is-info">
+                  <p class="title">Album</p>
+                  <p class="subtitle">- Album name-</p>
+                  <figure class="image is-4by3">
+                    <img src="assets/img/blink-182.jpeg">
+                  </figure>
+                </article>
+              </div>
+
+            </div>
+            <!-- end of upper left -->
+
+            <!-- below left / events & venue -->
+            <div class="tile is-parent">
+              <article class="tile is-child notification is-warning">
+                <p class="title has-text-dark">Events</p>
+                <p class="subtitle has-text-dark">- Events venues -</p>
+                <div class="content">
+                  <!-- Content -->
+                </div>
+              </article>
+            </div>
+
+          </div>
+          <!-- end of left vertical group -->
+
+          <!-- right vertical group / only lyrics -->
+          <div class="tile is-parent">
+            <article class="tile is-child notification is-primary">
+              <div class="content">
+                <p class="title">Lyrics</p>
+                <p class="subtitle">- Song lyrics-</p>
+                <div class="content">
+                  <!-- Content -->
+                </div>
+              </div>
+            </article>
+          </div>
+          <!-- end of right vertical group -->
+
         </div>
+        <!-- end tile -->
+
       </div>
     </section>
 
