@@ -90,5 +90,39 @@ class controllerMusic {
                 res.status(404).json({message : 'Song not found'})
             })
     }
+    static getEvents(req, res){
+        let id = req.params.id;
+        Song.findByPk(id)
+            .then(song => {
+                let keyword = song.artist;
+                return axios({
+                    "method":"GET",
+                    "url":`https://app.ticketmaster.com/discovery/v2/events.json?keyword=${keyword}&classificationName=music&apikey=qjdwY0n3PvucUYlBvyEktMp8YAiFoAD7`
+                })
+            })
+            .then((result)=>{
+                let temp = [];
+                if(result.data._embedded){
+                    let events = result.data._embedded.events;
+                    console.log(events.length)
+                    if(events.length > 5){
+                        events = events.splice(0,5);
+                    }
+                    events.forEach(event =>{
+                        let obj = {
+                            name : event.name,
+                            date : event.dates.start.localDate,
+                            time :event.dates.start.localTime,
+                            url : event.url
+                        }
+                        temp.push(obj)
+                    })    
+                }
+                res.status(200).json({events : temp});
+            })
+            .catch(err=>{
+                res.status(500).json({message : 'Internal Server Error'})
+            })
+    }
 }
 module.exports = controllerMusic;
