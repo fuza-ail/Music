@@ -20,6 +20,9 @@ module.exports = {
       clip: {
         type: Sequelize.STRING
       },
+      like: {
+        type: Sequelize.BOOLEAN
+      },
       UserId: {
         type: Sequelize.INTEGER
       },

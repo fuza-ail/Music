@@ -3,7 +3,7 @@ const { Song } = require('../models')
 class controllerMusic {
     static getLikedSongs(req, res){
         let id = req.UserId;
-        Song.findAll({where: {UserId : id}})
+        Song.findAll({where: {UserId : id, like : true}})
             .then(songs => {
                 res.status(200).json({songs});
             })
@@ -39,9 +39,8 @@ class controllerMusic {
                 clip = song.preview;
                 let artistSearch = artist.split(' ').join('%20').toLowerCase();
                 let titleSearch = title.split(' ').join('%20').toLowerCase();
-                Song.create({title,artist,picture,clip})
+                Song.create({title,artist,picture,clip, like : false, UserId: req.UserId})
                     .then((songData)=>{
-                        console.log(`Added ${title} by ${artist} to database`)
                         axios({
                             "method":"GET",
                             "url":`https://private-anon-8be88db5ae-lyricsovh.apiary-proxy.com/v1/${artistSearch}/${titleSearch}`,
@@ -65,7 +64,7 @@ class controllerMusic {
     }
     static addToLikedSongs(req, res){
         let id = req.params.id;
-        Song.update({UserId : req.UserId}, {where : {id : id}})
+        Song.update({like : true}, {where : {id : id}})
             .then(()=>{
                 return Song.findByPk(id)
             })

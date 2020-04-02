@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     artist: DataTypes.STRING,
     picture: DataTypes.STRING,
     clip: DataTypes.STRING,
+    like : DataTypes.BOOLEAN,
     UserId: DataTypes.INTEGER
   }, {sequelize})
 
