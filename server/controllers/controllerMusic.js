@@ -51,15 +51,15 @@ class controllerMusic {
                                 res.status(200).json({song : songData,lyrics});
                             })
                             .catch((error)=>{
-                              console.log(error)
+                                res.status(200).json({song : songData,lyrics : 'Lyrics Unavailable'});
                             })          
                     })
                     .catch(err => {
-                        console.log(err);
+                        res.status(500).json({message : 'Internal Server Error'})
                     })
             })
             .catch((error)=>{
-              console.log(error)
+                res.status(404).json({message : 'Song not found'});
             })
     }
     static addToLikedSongs(req, res){
@@ -69,7 +69,7 @@ class controllerMusic {
                 return Song.findByPk(id)
             })
             .then(song => {
-                res.status(200).json({song}); 
+                res.status(200).json({song})
             })
             .catch(err=>{
                 res.status(404).json({message : 'Song not found'})
@@ -92,12 +92,13 @@ class controllerMusic {
     }
     static getEvents(req, res){
         let id = req.params.id;
+        let artist;
         Song.findByPk(id)
             .then(song => {
-                let keyword = song.artist;
+                artist = song.artist;
                 return axios({
                     "method":"GET",
-                    "url":`https://app.ticketmaster.com/discovery/v2/events.json?keyword=${keyword}&classificationName=music&apikey=qjdwY0n3PvucUYlBvyEktMp8YAiFoAD7`
+                    "url":`https://app.ticketmaster.com/discovery/v2/events.json?keyword=${artist}&classificationName=music&apikey=qjdwY0n3PvucUYlBvyEktMp8YAiFoAD7`
                 })
             })
             .then((result)=>{
@@ -118,7 +119,7 @@ class controllerMusic {
                         temp.push(obj)
                     })    
                 }
-                res.status(200).json({events : temp});
+                res.status(200).json({artist, events : temp});
             })
             .catch(err=>{
                 res.status(500).json({message : 'Internal Server Error'})

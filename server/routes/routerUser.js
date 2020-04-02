@@ -6,6 +6,8 @@ routerUser.get('/',(req,res)=>{
 })
 routerUser.post('/login', controllerUser.login);
 routerUser.post('/register', controllerUser.register);
+routerUser.post('/loginGoogle', controllerUser.loginGoogle);
+routerUser.post('/loginFacebook',controllerUser.loginFacebook)
 
 
 module.exports = routerUser;

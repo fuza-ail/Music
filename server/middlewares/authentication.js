@@ -4,7 +4,7 @@ function authentication(req, res, next) {
   try {
     const token = req.headers.access_token;
     if (token) {
-      const decoded = jwt.verify(token, 'rahasia');
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
       req.UserId = decoded.UserId;
       req.email = decoded.UserEmail;
       next()
