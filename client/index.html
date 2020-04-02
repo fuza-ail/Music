@@ -27,14 +27,53 @@
         <div class="container column">
           <div class="field is-grouped is-grouped-centered">
             <div class="control">
-              <a href="#">
-                <button class="button is-danger">
-                  <strong>Sign Up!</strong>
-                </button>
-              </a>
+              <div class="dropdown">
+                <div class="dropdown-trigger">
+                  <button class="button is-danger" aria-haspopup="true" aria-controls="register-menu">
+                    <span>Register</span>
+                    <span class="icon is-small">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </div>
+                <div class="dropdown-menu" id="register-menu" role="menu">
+                  <div class="dropdown-content">
+                    <div class="dropdown-item">
+                      <form id="register">
+                        <div class="field">
+                          <p class="control has-icons-left">
+                          <input class="input" type="email" placeholder="Email">
+                          <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                          </span>
+                          </p>
+                        </div>
+                        <div class="field">
+                          <p class="control has-icons-left">
+                          <input class="input" type="password" placeholder="Password">
+                          <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                          </span>
+                          </p>
+                        </div>
+                        <hr class="dropdown-divider">
+                        <div class="field">
+                          <div class="control">
+                            <button type="submit" class="button is-warning is-fullwidth">
+                              <strong>
+                                Register!
+                              </strong>
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="control">
-              <a href="#">
+              <a href="#first-cell">
                 <button class="button is-primary">
                   Sign In!
                 </button>
@@ -80,7 +119,7 @@
             </div>
             <div class="field">
               <div class="control">
-                <button class="button is-warning is-fullwidth">
+                <button type="submit" class="button is-warning is-fullwidth">
                   <strong>
                     Sign In!
                   </strong>

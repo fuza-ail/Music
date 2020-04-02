@@ -1,9 +1,8 @@
 $(document).ready(function () {
   // BULMA
   // ==========
-  $('.navbar-burger').click(function () {
-    $('.navbar-burger').toggleClass('is-active');
-    $('.navbar-menu').toggleClass('is-active');
+  $('.dropdown-trigger').click(function () {
+    $('.dropdown').toggleClass('is-active');
   });
   // ==========
 });
