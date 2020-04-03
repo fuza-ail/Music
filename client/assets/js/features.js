@@ -18,6 +18,8 @@ $(document).ready(function () {
 
   // defaults
   $('#logout').hide();
+  $('#second-cell').hide();
+  $('#third-cell').hide();
 
   // register
   $('#register').on('submit', (e) => {
@@ -29,14 +31,28 @@ $(document).ready(function () {
   $('#login').on('submit', (e) => {
     e.preventDefault();
     login();
+
+    // show hide
+    // =========
+    // TOP
     $('#sign-in-top').hide();
     $('#logout').show();
+    // CONTENT
+    $('#second-cell').show();
+    $('#third-cell').show();
   });
 
   // logout
   $('#logout').on('click', (e) => {
     e.preventDefault();
     logout();
+
+    // show hide
+    // =========
+    $('#first-cell').show();
+    $('#logout').hide();
+    $('#second-cell').hide();
+    $('#third-cell').hide();
   });
 });
 
@@ -83,7 +99,7 @@ const login = () => {
       console.log(token.access_token);
       localStorage.setItem('access_token', token.access_token);
 
-      // remove drops
+      $('#first-cell').hide();
     })
     .fail(function (err) {
       if (err.status === 500) {
@@ -101,4 +117,6 @@ const logout = () => {
   auth2.signOut().then(function () {
     console.log('User signed out.');
   });
+
+  Swal.fire('Log Out!', 'successfully logged out!', 'success');
 };
