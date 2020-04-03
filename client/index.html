@@ -47,7 +47,7 @@
                         <!-- input for email -->
                         <div class="field">
                           <p class="control has-icons-left">
-                          <input class="input" type="email" placeholder="Email">
+                          <input class="input" type="email" placeholder="Email" autofocus="" id="emailRegister">
                           <span class="icon is-small is-left">
                             <i class="fas fa-envelope"></i>
                           </span>
@@ -57,7 +57,7 @@
                         <!-- input for password -->
                         <div class="field">
                           <p class="control has-icons-left">
-                          <input class="input" type="password" placeholder="Password">
+                          <input class="input" type="password" placeholder="Password" id="passwordRegister">
                           <span class="icon is-small is-left">
                             <i class="fas fa-lock"></i>
                           </span>
@@ -89,8 +89,11 @@
             <!-- redirect to sign in id form below -->
             <div class="control">
               <a href="#first-cell">
-                <button class="button is-primary">
+                <button id="sign-in-top" class="button is-primary">
                   Sign In!
+                </button>
+                <button id="logout" class="button is-light is-danger">
+                  Log Out
                 </button>
               </a>
             </div>
