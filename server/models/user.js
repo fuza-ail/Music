@@ -2,27 +2,29 @@
 module.exports = (sequelize, DataTypes) => {
   const Sequelize = sequelize.Sequelize;
   const Model = Sequelize.Model;
-  class User extends Model {
+  class User extends Model {}
+  User.init(
+    {
+      email: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: true,
+          isEmail: true,
+        },
+      },
+      password: {
+        type: DataTypes.STRING,
+      },
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    { sequelize }
+  );
 
-  }
-  User.init({
-    email: {
-      type: DataTypes.STRING,
-      unique: true,
-      validate:{
-        notEmpty: true
-      }
-    },
-    password: {
-      type: DataTypes.STRING
-    },
-    createdAt: new Date(),
-    updatedAt: new Date()
-  }, { sequelize })
-  
   User.associate = function (models) {
     // associations can be defined here
     User.hasMany(models.Song);
   };
   return User;
 };
+

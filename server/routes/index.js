@@ -5,5 +5,5 @@ const routerMuisc = require('./routerMusic');
 router.use(routerUser);
 router.use('/', routerMuisc);
 
+module.exports = router;
 
-module.exports = router

@@ -1,28 +1,7 @@
-// GOOGLE
-function onSignIn(googleUser) {
-  let profile = googleUser.getBasicProfile();
-  let id_token = googleUser.getAuthResponse().id_token;
-  $.ajax({
-    method: 'POST',
-    url: 'http://localhost:3000/loginGoogle',
-    data: {
-      token: id_token,
-    },
-    statusCode: {
-      200: function (response) {
-        localStorage.setItem('access_token', response.access_token);
-      },
-    },
-  });
-}
-
-function signOut() {
-  var auth2 = gapi.auth2.getAuthInstance();
-  auth2.signOut().then(function () {
-    console.log('User signed out.');
-    localStorage.removeItem('access_token');
-  });
-}
+// under-construction
+$('#facebook-login').on('click', (e) => {
+  Swal.fire('Oops!', 'Facebook login is under construction!', 'error');
+});
 
 //FACEBOOK
 window.fbAsyncInit = function () {
