@@ -26,7 +26,7 @@ P.S : You could also buy tickets too! 🎫 🎫 🎫
 **_APIs_** :
 
   1. [ Google Sign In ](https://developers.google.com/identity/sign-in/web/sign-in) and Authentications by @fuza-ail
-  2. [ LyricsOvh ](https://lyricsovh.docs.apiary.io/#reference/0/lyrics-of-a-song/search?console=1) and [ Deezer ](https://developers.deezer.com/login?redirect=/api) by @JulioSabandar  
+  2. [ LyricsOvh ](https://lyricsovh.docs.apiary.io/#reference/0/lyrics-of-a-song/search?console=1), [ Ticketmaster ](https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/) by @JulioSabandar  
 
 **_Frameworks_** :
 
