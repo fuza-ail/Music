@@ -115,6 +115,7 @@ const login = () => {
     .then(function (token) {
       console.log(token.access_token);
       localStorage.setItem('access_token', token.access_token);
+      getPlayList()
 
       $('#first-cell').hide();
 
@@ -276,3 +277,48 @@ $('#music-search').on('submit', (e) => {
       console.log(err);
     });
 });
+
+function getPlayList() {
+  $.ajax({
+    type: 'GET',
+    url: 'http://localhost:3000/music',
+    dataType: 'json',
+    beforeSend: function(request) {
+      request.setRequestHeader("access_token", localStorage.getItem('access_token'));
+    },
+  })
+    .done(function (data) {
+      console.log(data)
+      data.songs.forEach(element => {
+        $('#playlists').append(`
+        <tr>
+          <td><img src="${element.picture}" height="36" width="36" /></td>
+          <td>${element.title}</td>
+          <td>${element.artist}</td>
+          <td>
+            <p class="control">
+            <a class="button is-light" onclick="play(${element.clip})">
+            Play
+          </a>
+                Events
+              </a>
+              <a class="button is-light" onclick="deleteFromPlaylist(${element.id})">
+                Delete
+              </a>
+            </p>
+          </td>
+        </tr>
+        `)
+      });
+      
+    })
+    .fail(function (err) {
+      console.log(err)
+    });
+}
+
+function play (sourceAudio) {
+  console.log('masuk')
+  var audio = new Audio(sourceAudio)
+  audio.play()
+}
