@@ -3,7 +3,7 @@ function authorization (req, res, next){
     Song.findByPk(req.params.id)
         .then( song => {
             if(!song){
-                res.status(404).json({message: 'Todo not found'})
+                res.status(404).json({message: 'Song not found'})
             }else{
                 if(song.UserId == req.UserId){
                     next()
