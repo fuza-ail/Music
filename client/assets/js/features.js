@@ -18,8 +18,8 @@ $(document).ready(function () {
 
   // defaults
   $('#logout').hide();
-  // $('#second-cell').hide();
-  // $('#third-cell').hide();
+  $('#second-cell').hide();
+  $('#third-cell').hide();
   $('#after-search').hide();
 
   // register
@@ -116,11 +116,23 @@ const login = () => {
     data: data,
     dataType: 'json',
   })
-    .done(function (token) {
+    .then(function (token) {
       console.log(token.access_token);
       localStorage.setItem('access_token', token.access_token);
 
       $('#first-cell').hide();
+
+      // Playlists
+      return $.ajax({
+        type: 'GET',
+        url: 'http://localhost:3000/music',
+        headers: {
+          access_token: localStorage.getItem('access_token'),
+        },
+      });
+    })
+    .done((result) => {
+      console.log(result);
     })
     .fail(function (err) {
       if (err.status === 500) {
@@ -190,13 +202,15 @@ $('#music-search').on('submit', (e) => {
       access_token: localStorage.getItem('access_token'),
     },
   })
-    .done((result) => {
+    .then((result) => {
       console.log(result);
       const search = result.song;
       const lyric = result.lyrics;
+      const song_id = search.id;
 
       //
       $('#song-clip').empty();
+      $('#events-tickets').empty();
       const clip = `
         <source src="${search.clip}" type="audio/mpeg">
       `;
@@ -219,6 +233,41 @@ $('#music-search').on('submit', (e) => {
 
       //
       $('#song-lyric').html(lyric);
+
+      return $.ajax({
+        type: 'GET',
+        url: `http://localhost:3000/music/${song_id}/events`,
+        headers: {
+          access_token: localStorage.getItem('access_token'),
+        },
+      });
+    })
+    .done((result) => {
+      console.log(result.events);
+      const list = result.events;
+
+      for (let i = 0; i < list.length; i++) {
+        if (list[i].time == undefined) {
+          list[i].time = 'No info';
+        }
+
+        const format = `
+            <tr>
+              <td>${list[i].name}</td>
+              <td>${list[i].date}</td>
+              <td>${list[i].time}</td>
+              <td>
+                <a href="${list[i].url}" target="_blank" style="text-decoration: none">
+                  <button class="button is-danger">
+                    Purchase
+                  </button>
+                </a>
+              </td>
+            </tr>
+        `;
+
+        $('#events-tickets').append(format);
+      }
     })
     .fail((err) => {
       console.log(err);
