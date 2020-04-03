@@ -47,14 +47,16 @@ $(document).ready(function () {
   $('#google-login').on('click', (e) => {
     e.preventDefault();
 
-    // show hide
-    // =========
-    $('#sign-in-top').hide();
-    $('#logout').show();
-    $('#first-cell').hide();
-    // CONTENT
-    $('#second-cell').show();
-    $('#third-cell').show();
+    setTimeout(() => {
+      // show hide
+      // =========
+      $('#sign-in-top').hide();
+      $('#logout').show();
+      $('#first-cell').hide();
+      // CONTENT
+      $('#second-cell').show();
+      $('#third-cell').show();
+    }, 5000);
   });
 
   // logout
@@ -145,6 +147,15 @@ const onSignIn = (googleUser) => {
     statusCode: {
       200: function (response) {
         localStorage.setItem('access_token', response.access_token);
+
+        // show hide
+        // =========
+        $('#sign-in-top').hide();
+        $('#logout').show();
+        $('#first-cell').hide();
+        // CONTENT
+        $('#second-cell').show();
+        $('#third-cell').show();
       },
     },
   });
