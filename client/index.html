@@ -202,32 +202,20 @@
     <section id="second-cell" class="hero is-warning is-fullheight">
       <div class="hero-body">
         <div class="container has-text-centered" >
-          
-          <!-- from 2maleek (sumpah ak gatau ini apa gg banget haha) -->
-          <h1 class="title" id="particles-js" style="display: block; position:absolute top-left; height: 100vh;">
-            Playlists.
-          </h1>
-          <h2 class="subtitle">
-            This section will be showed after user has login access.
-          </h2>
           <h1 class="title">
-            Music Search test :
+            Music Search
           </h1>
 
           <!-- test cases -->
           <form id="music-search">
 
             <!-- search bar TEST -->
-            <div class="field">
-              <div class="control">
+            <div class="field has-addons">
+              <div class="control is-expanded">
                 <input class="input" placeholder="Search songs here..." type="text" name="title" id="song-title">
               </div>
-            </div>
-
-            <!-- submit TEST -->
-            <div class="field is-grouped is-grouped-centered">
               <div class="control">
-                <button class="button is-info" type="submit">
+                <button type="submit" class="button is-info" type="submit">
                   <strong>
                     Search!
                   </strong>
@@ -238,7 +226,30 @@
           </form>
           <!-- end of test cases -->
 
-        </div>
+          <div class="field">
+            <div class="control">
+              <div class="table-container">
+                <table class="table is-hoverable is-striped is-bordered">
+                  <thead>
+                    <tr class="is-selected">
+                      <th></th>
+                      <th>Title</th>
+                      <th>Artist</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>-- Album img --</td>
+                      <td>-- judul --</td>
+                      <td>-- artis --</td>
+                      <td>-- actions --</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
       </div>
     </section>
     <!-- end of second cell -->
@@ -247,8 +258,17 @@
     <section id="third-cell" class="hero is-dark is-fullheight">
       <div class="hero-body">
 
+        <div id="before-search">
+          <h1 class="title">
+            Query
+          </h1>
+          <h1 class="subtitle">
+            Search first!
+          </h1>
+        </div>
+
         <!-- tile -->
-        <div class="tile is-ancestor">
+        <div id="after-search" class="tile is-ancestor">
 
           <!-- left vertical group -->
           <div class="tile is-vertical is-8">
@@ -260,11 +280,13 @@
               <div class="tile is-parent is-vertical">
                 <article class="tile is-child notification is-danger">
                   <p class="title">Title</p>
-                  <p class="subtitle">- Song name -</p>
+                  <p class="subtitle" id="song-name">- Song name -</p>
+                  <audio controls id="song-clip">
+                  </audio>
                 </article>
                 <article class="tile is-child notification is-success">
                   <p class="title">Artist</p>
-                  <p class="subtitle">- Artist name-</p>
+                  <p class="subtitle" id="artist-name">- Artist name-</p>
                 </article>
               </div>
 
@@ -272,9 +294,8 @@
               <div class="tile is-parent">
                 <article class="tile is-child notification is-info">
                   <p class="title">Album</p>
-                  <p class="subtitle">- Album name-</p>
-                  <figure class="image is-4by3">
-                    <img src="assets/img/blink-182.jpeg">
+                  <figure class="image is-4by3" id="album-picture">
+                    <!-- <img src="assets/img/blink-182.jpeg"> -->
                   </figure>
                 </article>
               </div>
@@ -286,9 +307,9 @@
             <div class="tile is-parent">
               <article class="tile is-child notification is-warning">
                 <p class="title has-text-dark">Events</p>
-                <p class="subtitle has-text-dark">- Events venues -</p>
+                <p class="subtitle has-text-dark" id="events">- Events venues -</p>
                 <div class="content">
-                  <!-- Content -->
+                  <!-- cont -->
                 </div>
               </article>
             </div>
@@ -301,9 +322,9 @@
             <article class="tile is-child notification is-primary">
               <div class="content">
                 <p class="title">Lyrics</p>
-                <p class="subtitle">- Song lyrics-</p>
+                <p class="subtitle" id="song-lyric">- Song lyrics-</p>
                 <div class="content">
-                  <!-- Content -->
+                  <!-- cont -->
                 </div>
               </div>
             </article>

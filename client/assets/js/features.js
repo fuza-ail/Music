@@ -18,8 +18,9 @@ $(document).ready(function () {
 
   // defaults
   $('#logout').hide();
-  $('#second-cell').hide();
-  $('#third-cell').hide();
+  // $('#second-cell').hide();
+  // $('#third-cell').hide();
+  $('#after-search').hide();
 
   // register
   $('#register').on('submit', (e) => {
@@ -171,3 +172,55 @@ const logout = () => {
 
   Swal.fire('Log Out!', 'successfully logged out!', 'success');
 };
+
+// FEATURES - @padulkemid
+$('#music-search').on('submit', (e) => {
+  e.preventDefault();
+
+  const data = {
+    search: $('#song-title').val(),
+  };
+
+  $.ajax({
+    type: 'POST',
+    url: 'http://localhost:3000/music/search',
+    data: data,
+    dataType: 'json',
+    headers: {
+      access_token: localStorage.getItem('access_token'),
+    },
+  })
+    .done((result) => {
+      console.log(result);
+      const search = result.song;
+      const lyric = result.lyrics;
+
+      //
+      $('#song-clip').empty();
+      const clip = `
+        <source src="${search.clip}" type="audio/mpeg">
+      `;
+
+      //
+      const album_pic = search.picture;
+      const album_format = `
+        <img src="${album_pic}">
+      `;
+
+      //
+      $('#before-search').hide();
+      $('#after-search').show();
+
+      // change
+      $('#song-name').html(search.title);
+      $('#song-clip').append(clip);
+      $('#artist-name').html(search.artist);
+      $('#album-picture').append(album_format);
+
+      //
+      $('#song-lyric').html(lyric);
+    })
+    .fail((err) => {
+      console.log(err);
+    });
+});
