@@ -27,7 +27,9 @@ $(document).ready(function () {
     register();
   });
 
-  // login
+  // logins
+  // ======
+  // BASIC
   $('#login').on('submit', (e) => {
     e.preventDefault();
     login();
@@ -37,6 +39,19 @@ $(document).ready(function () {
     // TOP
     $('#sign-in-top').hide();
     $('#logout').show();
+    // CONTENT
+    $('#second-cell').show();
+    $('#third-cell').show();
+  });
+  // Google
+  $('#google-login').on('click', (e) => {
+    e.preventDefault();
+
+    // show hide
+    // =========
+    $('#sign-in-top').hide();
+    $('#logout').show();
+    $('#first-cell');
     // CONTENT
     $('#second-cell').show();
     $('#third-cell').show();
@@ -108,6 +123,24 @@ const login = () => {
         console.log(err.responseJSON.error);
       }
     });
+};
+
+// Google login - @fuza-ail
+const onSignIn = (googleUser) => {
+  let profile = googleUser.getBasicProfile();
+  let id_token = googleUser.getAuthResponse().id_token;
+  $.ajax({
+    method: 'POST',
+    url: 'http://localhost:3000/loginGoogle',
+    data: {
+      token: id_token,
+    },
+    statusCode: {
+      200: function (response) {
+        localStorage.setItem('access_token', response.access_token);
+      },
+    },
+  });
 };
 
 // logout - @2maleek
