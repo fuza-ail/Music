@@ -51,7 +51,7 @@ $(document).ready(function () {
     // =========
     $('#sign-in-top').hide();
     $('#logout').show();
-    $('#first-cell');
+    $('#first-cell').hide();
     // CONTENT
     $('#second-cell').show();
     $('#third-cell').show();
@@ -95,6 +95,9 @@ const register = () => {
     })
     .fail(function (err) {
       console.log(err.responseJSON.errors[0].message);
+
+      // swal
+      Swal.fire('oops!', `${err.responseJSON.errors[0].message}`, 'error');
     });
 };
 
@@ -119,8 +122,12 @@ const login = () => {
     .fail(function (err) {
       if (err.status === 500) {
         console.log('Internal server error!');
+
+        Swal.fire('Lah dalah!', 'Internal server error', 'error');
       } else {
         console.log(err.responseJSON.error);
+
+        Swal.fire('Eits!', 'Did your username/password is correct?', 'question');
       }
     });
 };
