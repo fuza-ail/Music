@@ -8,10 +8,6 @@ $(document).ready(function () {
 
   // Routes from @JulioSabandar
   // ==========
-  // routerMusic.get('/music', controllerMusic.getLikedSongs);
-  // routerMusic.get('/music/search', controllerMusic.getSongBySearch);
-  // routerMusic.post('/music/:id', controllerMusic.addToLikedSongs);
-  // routerMusic.delete('/music/:id', controllerMusic.deleteLikedSongs);
 
   // Auths from @2maleek and @fuza-ail
   // ==========
@@ -188,6 +184,13 @@ const logout = () => {
 // FEATURES - @padulkemid
 $('#music-search').on('submit', (e) => {
   e.preventDefault();
+
+  $('html, body').animate(
+    {
+      scrollTop: $('#third-cell').offset().top,
+    },
+    500
+  );
 
   const data = {
     search: $('#song-title').val(),
