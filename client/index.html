@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-signin-client_id"
+    content="1045028694398-lbva030821bd561ibtja7j65cfcs2l9l.apps.googleusercontent.com">
+    <title>Indonesia Top Tracks!</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+
+    <!-- css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+
+  </head>
+  <body>
+    <!-- sections -->
+    <section class="hero is-link">
+      <div class="hero-body columns">
+        <div class="container column is-three-fifths">
+          <h1 class="title">
+            🥁  Indonesia Top Tracks!
+          </h1>
+          <h2 class="subtitle">
+            👨‍🎤 👩‍🎤  For you, music headed teenagers!
+          </h2>
+        </div>
+        <div class="container column">
+          <div class="field is-grouped is-grouped-centered">
+            <div class="control">
+              <div class="dropdown">
+                <div class="dropdown-trigger">
+                  <button class="button is-danger" aria-haspopup="true" aria-controls="register-menu">
+                    <span>Register</span>
+                    <span class="icon is-small">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </div>
+                <div class="dropdown-menu" id="register-menu" role="menu">
+                  <div class="dropdown-content">
+                    <div class="dropdown-item">
+
+
+                      <!-- register form --> 
+                      <form id="register">
+
+                        <!-- input for email -->
+                        <div class="field">
+                          <p class="control has-icons-left">
+                          <input class="input" type="email" placeholder="Email" autofocus="" id="emailRegister">
+                          <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                          </span>
+                          </p>
+                        </div>
+
+                        <!-- input for password -->
+                        <div class="field">
+                          <p class="control has-icons-left">
+                          <input class="input" type="password" placeholder="Password" id="passwordRegister">
+                          <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                          </span>
+                          </p>
+                        </div>
+
+                        <hr class="dropdown-divider">
+
+                        <!-- submit -->
+                        <div class="field">
+                          <div class="control">
+                            <button type="submit" class="button is-warning is-fullwidth">
+                              <strong>
+                                Register!
+                              </strong>
+                            </button>
+                          </div>
+                        </div>
+
+                      </form>
+                      <!-- end of register form --> 
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- redirect to sign in id form below -->
+            <div class="control">
+              <a href="#first-cell">
+                <button id="sign-in-top" class="button is-primary">
+                  Sign In!
+                </button>
+              </a>
+                <button id="logout" class="button is-light is-danger">
+                  Log Out
+                </button>
+            </div>
+            <!-- end of button -->
+
+          </div>
+          <hr class="navbar-divider">
+        </div>
+      </div>
+    </section>
+    <!-- end of hero navbar -->
+
+    <!-- first-cell / login -->
+    <section id="first-cell" class="hero is-primary is-fullheight">
+      <div class="hero-body columns">
+
+        <!-- first container, left side (title text) -->
+        <div class="container has-text-centered column">
+          <h1 class="title">
+            Please, Sign In
+          </h1>
+          <h1 class="subtitle">
+            - To view your playlist -
+          </h1>
+        </div>
+
+        <!-- login form -->
+        <div class="container is-fluid column">
+
+          <!-- title -->
+          <h1 class="title has-text-centered">
+            Here &darr;
+          </h1>
+
+          <!-- form -->
+          <form id="login">
+
+            <!-- input email -->
+            <div class="field">
+              <p class="control has-icons-left">
+              <input class="input" id="emailLogin" type="email" placeholder="Email">
+              <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
+              </p>
+            </div>
+
+            <!-- input password -->
+            <div class="field">
+              <p class="control has-icons-left">
+              <input class="input" id="passwordLogin" type="password" placeholder="Password">
+              <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+              </span>
+              </p>
+            </div>
+
+            <!-- submit -->
+            <div class="field">
+              <div class="control">
+                <button type="submit" class="button is-warning is-fullwidth">
+                  <strong>
+                    Sign In!
+                  </strong>
+                </button>
+              </div>
+            </div>
+
+            <!-- 3rd party authentication -->
+            <div class="field is-grouped is-grouped-centered">
+
+              <!-- google oauth -->
+              <div class="control" id="google-login" data-onsuccess="googleLogin">
+                  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+              </div>
+
+              <!-- facebook oauth -->
+              <div class="control">
+                  <!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"> -->
+  <!-- </fb:login-button> -->
+
+                <button type="button" id="facebook-login" class="button is-info is-fullwidth">
+                  <span class="icon">
+                    <i class="fab fa-facebook-f"></i>
+                  </span>
+                  <strong>
+                    Facebook
+                  </strong>
+                </button>
+              </div>
+
+            </div>
+            <!-- end of 3rd party auths -->
+
+          </form>
+          <!-- end of login form -->
+
+        </div>
+      </div>
+    </section>
+
+    <!-- second-cell / playlists -->
+    <!-- second-cell is WORK-IN-PROGRESS -->
+    <section id="second-cell" class="hero is-warning is-fullheight">
+      <div class="hero-body">
+        <div class="container has-text-centered" >
+          <h1 class="title">
+            Music Search
+          </h1>
+
+          <!-- test cases -->
+          <form id="music-search">
+
+            <!-- search bar TEST -->
+            <div class="field has-addons">
+              <div class="control is-expanded">
+                <input class="input" placeholder="Search songs here..." type="text" name="title" id="song-title">
+              </div>
+              <div class="control">
+                <button type="submit" class="button is-info" type="submit">
+                  <strong>
+                    Search!
+                  </strong>
+                </button>
+              </div>
+            </div>
+
+          </form>
+          <!-- end of test cases -->
+
+          <div class="field">
+            <div class="control">
+              <div class="table-container">
+                <table class="table is-hoverable is-striped is-bordered" style="margin: 10px; padding: 5px">
+                  <thead>
+                    <tr class="is-selected">
+                      <th></th>
+                      <th>Title</th>
+                      <th>Artist</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="playlists">
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+      </div>
+    </section>
+    <!-- end of second cell -->
+
+    <!-- third-cell / events and lyrics -->
+    <section id="third-cell" class="hero is-dark is-fullheight">
+      <div class="hero-body">
+
+        <div class="container has-text-centered" id="before-search">
+          <h1 class="title">
+            Please search for music!
+          </h1>
+          <h1 class="subtitle">
+            Use query above to search, thank you! 
+          </h1>
+        </div>
+
+        <!-- tile -->
+        <div id="after-search" class="tile is-ancestor">
+
+          <!-- left vertical group -->
+          <div class="tile is-vertical is-8">
+
+            <!-- upper left boxes -->
+            <div class="tile">
+
+              <!-- title and artist -->
+              <div class="tile is-parent is-vertical">
+                <article class="tile is-child notification is-danger">
+                  <p class="title">Title</p>
+                  <p class="subtitle" id="song-name">- Song name -</p>
+                  <audio controls id="song-clip">
+                  </audio>
+                </article>
+                <article class="tile is-child notification is-success">
+                  <p class="title">Artist</p>
+                  <p class="subtitle" id="artist-name">- Artist name-</p>
+                </article>
+              </div>
+
+              <!-- album -->
+              <div class="tile is-parent">
+                <article class="tile is-child notification is-info">
+                  <p class="title">Album</p>
+                  <figure class="image is-4by3" id="album-picture">
+                    <!-- <img src="assets/img/blink-182.jpeg"> -->
+                  </figure>
+                </article>
+              </div>
+
+            </div>
+            <!-- end of upper left -->
+
+            <!-- below left / events & venue -->
+            <div class="tile is-parent">
+              <article class="tile is-child notification is-warning">
+                <p class="title has-text-dark">Events</p>
+
+                <!-- events table -->
+                <div class="table-container">
+                  <table class="table">
+                    <thead>
+                      <tr class="is-selected">
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Tickets</th>
+                      </tr>
+                    </thead>
+                    <tbody id="events-tickets">
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="content">
+                  <!-- cont -->
+                </div>
+              </article>
+            </div>
+
+          </div>
+          <!-- end of left vertical group -->
+
+          <!-- right vertical group / only lyrics -->
+          <div class="tile is-parent">
+            <article class="tile is-child notification is-primary">
+              <div class="content">
+                <p class="title">Lyrics</p>
+                <p class="subtitle" id="song-lyric">- Song lyrics-</p>
+                <div class="content">
+                  <!-- cont -->
+                </div>
+              </div>
+            </article>
+          </div>
+          <!-- end of right vertical group -->
+
+        </div>
+        <!-- end tile -->
+
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Indonesia Top Tracks!</strong> by <a href="http://github.com/IndonesiaTopTracks/Music">Julio, El, Malik, and Padul</a>.
+        </p>
+        <p>
+          &copy; 2020, all rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- javascripts -->
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
+  <script type="text/javascript">
+    particlesJS("particles-js", {"particles":{"number":{"value":60,"density":{"enable":true,"value_area":800}},"color":{"value":"#000000"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":0.25,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":3,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":true,"distance":150,"color":"#000000","opacity":0.3,"width":1},"move":{"enable":true,"speed":3,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"repulse"},"onclick":{"enable":true,"mode":"push"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});var count_particles, stats, update; stats = new Stats; stats.setMode(0); stats.domElement.style.position = 'absolute'; stats.domElement.style.left = '0px'; stats.domElement.style.top = '0px'; document.body.appendChild(stats.domElement); count_particles = document.querySelector('.js-count-particles'); update = function() { stats.begin(); stats.end(); if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) { count_particles.innerText = window.pJSDom[0].pJS.particles.array.length; } requestAnimationFrame(update); }; requestAnimationFrame(update);;
+  </script>
+  <script src="assets/js/features.js"></script>
+  <script src="assets/js/facebook.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  </body>
+</html>
